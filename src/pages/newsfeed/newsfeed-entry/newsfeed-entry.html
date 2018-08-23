@@ -1,0 +1,22 @@
+<ion-card>
+
+  <ion-item>
+    <ion-avatar item-start>
+      <img [src]="entry.author.imgUrl">
+    </ion-avatar>
+    <h2>{{entry.author.name}}</h2>
+    <p>{{entry.date.getDate()}}.{{entry.date.getMonth()}}.{{entry.date.getFullYear()}} {{entry.date.getHours()}}:{{entry.date.getMinutes()}}:{{entry.date.getSeconds()}}</p>
+  </ion-item>
+
+  <img *ngIf="entry.imgUrl" [src]="entry.imgUrl">
+
+  <ion-card-content>
+    <h2><strong>{{entry.title}}</strong></h2>
+    <p>{{entry.content}}</p>
+  </ion-card-content>
+
+  <ion-row *ngIf="authenticationProvider.isAdministrator()">
+    <button ion-button full (click)="onEditEntry()">Edit</button>
+  </ion-row>
+
+</ion-card>
